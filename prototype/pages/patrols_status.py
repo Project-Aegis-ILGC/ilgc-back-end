@@ -73,7 +73,7 @@ if patrol_df.shape[0] > 0:
         
         phone_number = guards_df.loc[guards_df["name"] == patrol["guard_name"], "phone_number"].iloc[0]
 
-        wifi_data = pd.read_excel(f"./data/{phone_number}.xlsx")
+        wifi_data = pd.read_excel(f"data/{phone_number}.xlsx")
         wifi_data = generate_time_buckets(wifi_data)
         wifi_data.to_excel("check.xlsx")
         wifi_data["Start Time"] = wifi_data["Start Time"].apply(lambda x: (datetime.datetime.strptime(x, date_format) + datetime.timedelta(seconds=19800)).timestamp())
